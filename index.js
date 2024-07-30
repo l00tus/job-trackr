@@ -1,13 +1,18 @@
-require('dotenv').config()
-const express = require('express')
-const mongoose = require('mongoose')
-const app = express()
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
+const app = express();
 
 app.use(express.json())
 
 const port = 3000;
 const dbUsername = process.env.DB_USERNAME;
 const dbPassword = process.env.DB_PASSWORD;
+
+//Routes
+const applicationsRouter = require('./routers/applications.router');
+
+app.use('/applications', applicationsRouter);
 
 app.listen(port, () => {
     console.log(`App running on port ${port}!`);
