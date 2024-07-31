@@ -12,7 +12,7 @@ const dbPassword = process.env.DB_PASSWORD;
 //Routes
 const applicationsRouter = require("./routers/applications.router");
 
-app.use("/applications", applicationsRouter);
+app.use("/api/applications", applicationsRouter);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}!`);
