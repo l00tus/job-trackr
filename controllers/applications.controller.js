@@ -24,6 +24,17 @@ const applicationsController = {
       res.status(500).send({ "error": error });
     }
   },
+  deleteApplicationByID: async (req, res) => {
+    const id = req.params.id;
+
+    const response = await applicationsService.deleteApplicationByID(id);
+
+    if(response.deletedCount == 0) {
+      res.status(404).send({ error: "No applications with the given ID was found" });
+    } else {
+      res.status(204).send();
+    }
+  }
 };
 
 module.exports = applicationsController;

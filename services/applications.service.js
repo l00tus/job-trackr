@@ -10,14 +10,19 @@ const applicationsService = {
 
     return application;
   },
-  createApplication: (applicationObject) => {
+  createApplication: async (applicationObject) => {
     applicationObject.id = uuidv4();
     const newApplication = new ApplicationModel(applicationObject);
-    return newApplication
-      .save()
-      .catch((error) => {
-        throw error;
-      });
+    try {
+      return await newApplication.save();
+    } catch (error) {
+      throw error;
+    }
+  },
+  deleteApplicationByID: async (id) => {
+    const response = await ApplicationModel.deleteOne({ id: id });
+
+    return response;
   },
 };
 
