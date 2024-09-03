@@ -27,6 +27,29 @@ const usersController = {
             }
         }
     },
+    loginUser: async (req, res) => {
+        const { username, password } = req.body;
+
+        if(!username || !password) {
+            res.status(400).send({ "error": "All fields are required" });
+            return;
+        }
+
+        const userObject = { username, password };
+
+        try {
+            const token = await usersService.loginUser(userObject);
+
+            if(!token) {
+                res.status(401).send({ "error": "Invalid username or password" });
+                return;
+            }
+
+            res.status(200).send({ "token": token });
+        } catch (error) {
+            res.status(500).send({ "error": error });
+        }
+    },
 }
 
 module.exports = usersController;
