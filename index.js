@@ -6,20 +6,20 @@ const app = express();
 app.use(express.json());
 
 const port = 3000;
-const dbUsername = process.env.DB_USERNAME;
-const dbPassword = process.env.DB_PASSWORD;
 
 //Routes
 const applicationsRouter = require("./routers/applications.router");
+const usersRouter = require("./routers/users.router");
 
 app.use("/api/applications", applicationsRouter);
+app.use("/api/users", usersRouter);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}!`);
 
   mongoose
     .connect(
-      `mongodb+srv://${dbUsername}:${dbPassword}@cluster.wanx9kn.mongodb.net/job-trackr?retryWrites=true&w=majority&appName=cluster`
+      process.env.DB_URI
     )
     .then(() => {
       console.log("Successfully connected to the database!");
