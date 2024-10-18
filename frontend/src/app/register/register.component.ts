@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router'
+import { Router, RouterModule } from '@angular/router'
 import { AuthService } from '../services/auth.service';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -24,11 +23,17 @@ export class RegisterComponent {
     });
   }
 
+  ngOnInit(): void {
+    this.registerForm.valueChanges.subscribe(() => {
+      this.errorMessage = '';
+    });
+  }
+
   onSubmit() {
     if(this.registerForm.valid) {
       this.authService.register(this.registerForm.value).subscribe({
         next: (response) => {
-          console.log("Registration successful", response);
+          // console.log("Registration successful", response);
           this.router.navigate(['/login'])
         },
         error: (error) => {
