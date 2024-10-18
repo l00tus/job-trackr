@@ -45,11 +45,20 @@ const usersController = {
                 return;
             }
 
-            res.status(200).send({ "token": token });
+            res.cookie('token', token, {
+                httpOnly: true,
+                sameSite: 'Strict',
+                maxAge: 24 * 60 * 60 * 1000
+            })
+            res.status(200).send({ "message": "Token created successfully!" });
         } catch (error) {
             res.status(500).send({ "error": error });
         }
     },
+    logoutUser: async (req, res) => {
+        res.clearCookie('token');
+        res.status(200).send({ "message": "Logout successful! "});
+    }
 }
 
 module.exports = usersController;
