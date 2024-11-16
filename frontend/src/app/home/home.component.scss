@@ -14,10 +14,14 @@ $primary-text: #6482ad;
 
 .content h1 {
     font-size: 48px;
+    text-align: center;
 }
 
 .content span {
     color: $primary-text;
+}
+
+.content #user {
     animation: zoomIn 1.5s ease-out forwards;
 }
 
@@ -35,6 +39,7 @@ $primary-text: #6482ad;
 
 .content h3 {
     padding-bottom: 48px;
+    text-align: center;
 }
 
 .button-group {
@@ -45,6 +50,10 @@ $primary-text: #6482ad;
 }
 
 .button-group button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
     width: 150px;
     background-color: $bg-color;
     color: $primary-text;
@@ -58,5 +67,14 @@ $primary-text: #6482ad;
 
 .button-group button:hover {
     background-color: $primary-text;
+    color: $primary-color;
+}
+
+.material-icons {
+    color: black;
+}
+
+.button-group button:hover .material-symbols-outlined,
+.button-group button:hover .material-icons {
     color: $primary-color;
 }
