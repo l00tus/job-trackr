@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -11,19 +12,19 @@ import { RouterModule } from '@angular/router';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  username: string = "";
   isLoggedIn: boolean = false;
+  isAppInitialized: boolean = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private userService: UserService) {}
 
-  ngOnInit(): void {
-    this.authService.isLoggedIn().subscribe(
-      response => {
-      if(response.authenticated) {
-        this.isLoggedIn = true;
-      } else {
-        this.isLoggedIn = false;
-      }
-    },
-  );
+  async ngOnInit(): Promise<void> {
+    const status: string | null = localStorage.getItem('isLoggedIn');
+
+    if(status) {
+      this.isLoggedIn = true;
+    }
+
+    this.isAppInitialized = true;
   }
 }
