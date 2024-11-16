@@ -1,0 +1,49 @@
+$bg-color: #e2dad6;
+$primary-color: #f5eded;
+$primary-text: #6482ad;
+
+.content {
+    background-color: $bg-color;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content h1 {
+    font-size: 48px;
+}
+
+.content span {
+    color: $primary-text;
+}
+
+.content h3 {
+    padding-bottom: 48px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-group button {
+    width: 120px;
+    background-color: $bg-color;
+    color: $primary-text;
+    border: 2px solid $primary-text;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;
+}
+
+.button-group button:hover {
+    background-color: $primary-text;
+    color: $primary-color;
+}

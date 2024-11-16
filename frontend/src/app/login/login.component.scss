@@ -1,5 +1,5 @@
 $bg-color: #e2dad6;
-$card-color: #f5eded;
+$primary-color: #f5eded;
 $primary-text: #6482ad;
 
 input:-webkit-autofill,
@@ -25,7 +25,7 @@ select:-webkit-autofill:focus {
 
 .login-card {
   width: 25%;
-  background-color: $card-color;
+  background-color: $primary-color;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 18px 32px;
   display: flex;
@@ -70,7 +70,7 @@ input:focus {
 
 button {
   background-color: $primary-text;
-  color: $card-color;
+  color: $primary-color;
   font-size: 15px;
   height: 40px;
   margin-top: 40px;
