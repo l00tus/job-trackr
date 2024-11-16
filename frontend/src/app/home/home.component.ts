@@ -1,30 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { platform } from 'os';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  username: string = "";
+  username: string = '';
+  isBrowser: boolean = false;
   isLoggedIn: boolean = false;
   isAppInitialized: boolean = false;
 
-  constructor(private authService: AuthService, private userService: UserService) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: any,
+    private authService: AuthService,
+    private userService: UserService
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   async ngOnInit(): Promise<void> {
-    const status: string | null = localStorage.getItem('isLoggedIn');
+    if (this.isBrowser) {
+      const status: string | null = localStorage.getItem('isLoggedIn');
 
-    if(status) {
-      this.isLoggedIn = true;
+      if (status) {
+        this.isLoggedIn = true;
+        
+        try {
+          await this.userService.fetchUser();
+          this.username = this.userService.getUsername();
+        } catch (err) {
+          console.error(err);
+        }
+      }
+
+      this.isAppInitialized = true;
     }
-
-    this.isAppInitialized = true;
   }
 }

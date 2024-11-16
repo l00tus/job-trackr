@@ -60,23 +60,20 @@ const usersController = {
         res.clearCookie('token');
         res.status(200).send({ "message": "Logout successful! "});
     },
-    checkAuth: async (req, res) => {
+    getInfo: async (req, res) => {
         const token = req.cookies.token;
 
         if(!token) {
-            res.status(401).send({ "error": "No token!", "authenticated": false});
+            res.status(401).send({ "error": "No token!"});
             return;
         }
         
-        jwt.verify(token, process.env.JWT_SECRET, (err, decode) => {
-            if(err) {
-                res.status(401).send({ "error": "Invalid token!", "authenticated": false});
-            }
-
-            res.status(200).send({ "message": "Authenticated", "authenticated": true});
-        })
-
-        return;
+        try {
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            res.status(200).send(decoded);
+        } catch (err) {
+            res.status(401).send({ "error": "Invalid token" })
+        }
     }
 }
 
