@@ -48,9 +48,10 @@ const usersController = {
 
             res.cookie('token', token, {
                 httpOnly: true,
-                sameSite: 'Strict',
+                sameSite: 'strict',
                 maxAge: 24 * 60 * 60 * 1000
             })
+
             res.status(200).send({ "message": "Token created successfully!" });
         } catch (error) {
             res.status(500).send({ "error": error });
@@ -73,6 +74,21 @@ const usersController = {
             res.status(200).send(decoded);
         } catch (err) {
             res.status(401).send({ "error": "Invalid token" })
+        }
+    },
+    checkAuth: async (req, res) => {
+        const token = req.cookies.token;
+
+        if(!token) {
+            res.status(402).send({ "error": "No token!", "isLoggedIn": false });
+            return;
+        }
+
+        try {
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            res.status(200).send({ "isLoggedIn": true});
+        } catch (err) {
+            res.status(401).send({ "error": "Invalid token", "isLoggedIn": false });
         }
     }
 }

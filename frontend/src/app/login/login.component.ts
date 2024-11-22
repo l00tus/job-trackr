@@ -37,19 +37,14 @@ export class LoginComponent {
     });
   }
 
-  onSubmit() {
-    if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value).subscribe({
-        next: (response) => {
-          this.router.navigate(['/home']);
-          localStorage.setItem('isLoggedIn', 'true');
-        },
-        error: (error) => {
-          console.error('Login failed', error);
-          this.errorMessage =
-            'Login failed. The email or password you entered is incorrect. Please try again.';
-        },
-      });
+  async onSubmit() {
+    if (this.loginForm.valid)
+      try {
+        await this.authService.login(this.loginForm.value);
+        this.router.navigate(['/home']);
+      } catch (err) {
+        console.error("Login failed", err);
+        this.errorMessage = 'Login failed. The email or password you entered is incorrect. Please try again.';
+      }
     }
   }
-}

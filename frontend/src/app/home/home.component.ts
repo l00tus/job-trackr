@@ -28,11 +28,14 @@ export class HomeComponent {
 
   async ngOnInit(): Promise<void> {
     if (this.isBrowser) {
-      const status: string | null = localStorage.getItem('isLoggedIn');
-
-      if (status) {
-        this.isLoggedIn = true;
-        
+      try {
+        this.isLoggedIn = await this.userService.userLoggedIn();
+      } catch (err) {
+        console.error(err);
+        this.isLoggedIn = false;
+      }
+      
+      if (this.isLoggedIn) {        
         try {
           await this.userService.fetchUser();
           this.username = this.userService.getUsername();
