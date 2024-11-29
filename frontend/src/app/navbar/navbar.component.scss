@@ -1,0 +1,57 @@
+$bg-color: #e2dad6;
+$card-color: #f5eded;
+$primary-text: #6482ad;
+
+nav {
+    width: 50px;
+    height: 40vh;
+    min-height: 350px;
+    background-color: $primary-text;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    transition: width 0.3s;
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav:hover {
+    width: 150px;
+}
+
+ul {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+}
+
+ul > :nth-last-child(3) {
+    margin-top: auto;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px;
+    color: $bg-color;
+    font-size: 13px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+li:hover {
+    background-color: $bg-color;
+    color: $primary-text;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+hr {
+    color: $bg-color;
+}
