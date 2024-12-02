@@ -1,9 +1,7 @@
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
-import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { platform } from 'os';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +18,6 @@ export class HomeComponent {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
-    private authService: AuthService,
     private userService: UserService
   ) {
     this.isBrowser = isPlatformBrowser(platformId);

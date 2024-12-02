@@ -1,0 +1,34 @@
+$bg-color: #e2dad6;
+$card-color: #f5eded;
+$primary-text: #6482ad;
+
+body {
+    background-color: $bg-color;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header h1 {
+    color: $primary-text;
+    cursor: pointer;
+}
+
+main {
+    display: flex;
+}
+
+aside {
+    background-color: $card-color;
+}
+
+.dynamic-content {
+    background-color: $card-color;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px
+}

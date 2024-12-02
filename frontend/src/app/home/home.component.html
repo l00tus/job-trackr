@@ -4,8 +4,8 @@
             <h1>Welcome back, <span id="user">{{ username }}</span>.</h1>
             <h3>Your job search journey begins here!</h3>
             <div class="button-group">
-                <button><span class="material-symbols-outlined">dashboard</span>Dashboard</button>
-                <button><span class="material-symbols-outlined">monitoring</span>Analytics</button>
+                <button [routerLink]="['/main/dashboard']"><span class="material-symbols-outlined">dashboard</span>Dashboard</button>
+                <button [routerLink]="['/main/analytics']"><span class="material-symbols-outlined">monitoring</span>Analytics</button>
                 
             </div>
         </div>
