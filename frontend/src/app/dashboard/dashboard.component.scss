@@ -1,0 +1,20 @@
+$bg-color: #e2dad6;
+$primary-color: #f5eded;
+$primary-text: #6482ad;
+
+table {
+    border: 1px solid black;
+}
+
+table th {
+    background-color: rgb(100, 130, 173, 0.6);
+    font-weight: 550;
+}
+
+table tr {
+    background-color: rgb(100, 130, 173, 0.1);;
+}
+th, td {
+    text-align: center;
+    color: black;
+}
