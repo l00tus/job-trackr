@@ -1,6 +1,6 @@
-$bg-color: #e2dad6;
-$primary-color: #f5eded;
-$primary-text: #6482ad;
+$bg-color: #6482ad33;
+$primary-color: #ffffff;
+$primary-text: rgba(85, 142, 223, 0.6);
 
 .content {
     background-color: $bg-color;
@@ -44,7 +44,7 @@ $primary-text: #6482ad;
 
 .button-group {
     display: flex;
-    gap: 10px;
+    gap: 25px;
     justify-content: center;
     align-items: center;
 }
@@ -55,26 +55,26 @@ $primary-text: #6482ad;
     justify-content: center;
     gap: 6px;
     width: 150px;
-    background-color: $bg-color;
-    color: $primary-text;
-    border: 2px solid $primary-text;
+    color: black;
+    background-color: $primary-text;
+    border: 2px solid black;
+    box-shadow: 4px 4px;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     text-align: center;
 }
 
+.button-group span {
+    color: black;
+}
+
 .button-group button:hover {
-    background-color: $primary-text;
-    color: $primary-color;
+    box-shadow: 0px 0px;
+    transform: translate(4px, 4px);
 }
 
 .material-icons {
     color: black;
-}
-
-.button-group button:hover .material-symbols-outlined,
-.button-group button:hover .material-icons {
-    color: $primary-color;
 }
