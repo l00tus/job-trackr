@@ -1,6 +1,6 @@
-$bg-color: #e2dad6;
-$card-color: #f5eded;
-$primary-text: #6482ad;
+$bg-color: #6482ad33;
+$card-color: #ffffff;
+$primary-text: #8DB1E6;
 
 nav {
     width: 50px;
@@ -14,6 +14,8 @@ nav {
     position: sticky;
     top: 0;
     z-index: 10;
+    border: 2px solid black;
+    border-left: none;
 }
 
 nav:hover {
@@ -39,19 +41,17 @@ li {
     align-items: center;
     gap: 5px;
     padding: 3px;
-    color: $bg-color;
+    color: black;
     font-size: 13px;
     overflow: hidden;
     cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
 li:hover {
-    background-color: $bg-color;
-    color: $primary-text;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
+    transform: scale(1.05);
 }
 
 hr {
-    color: $bg-color;
+    border-color: black;
 }
