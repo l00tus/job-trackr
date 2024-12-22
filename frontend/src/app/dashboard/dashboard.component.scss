@@ -16,14 +16,24 @@ $primary-text: #8DB1E6;
     }
 }
 
+mat-paginator {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 // paginator styles
 ::ng-deep {
     .mdc-notched-outline > * {
         border: none !important;
     }
+
+    .mat-mdc-paginator-container {
+        padding: 0px !important;
+    }
     mat-select {
         border: 2px solid black;
-        background-color: #8DB1E6;
+        background-color: $primary-text;
         padding: 10px 20px;
         border-radius: 10px;
 
@@ -32,6 +42,18 @@ $primary-text: #8DB1E6;
         }
     }
 
+    .mat-mdc-select-panel {
+        padding: 0px !important;
+        box-shadow: none !important;
+    }
+
+    mat-option {
+        border: 2px solid black;
+        background-color: $primary-text !important;
+        padding: 10px 20px;
+        border-radius: 10px;
+        margin-top: 5px;
+    }
 
     .mat-mdc-paginator-range-actions {
         gap: 10px;
@@ -42,7 +64,8 @@ $primary-text: #8DB1E6;
 
         .mat-mdc-paginator-range-label {
             margin: 0px !important;
-            padding: 0px 10px;
+            padding-left: 10px;
+            width: 105px;
         }
 
         button {
@@ -65,6 +88,7 @@ table {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     width: 100%;
+    table-layout: fixed;
 }
 
 table th {
@@ -105,6 +129,7 @@ table tr {
     }
 }
 th, td {
+    word-wrap: break-word;
     text-align: center;
     color: black;
 }

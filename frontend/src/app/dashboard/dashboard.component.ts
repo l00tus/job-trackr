@@ -7,7 +7,7 @@ import { MatTableModule } from '@angular/material/table';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [DatePipe, MatTableModule, MatButtonModule, MatPaginatorModule],
+  imports: [DatePipe, MatTableModule, MatButtonModule, MatPaginatorModule, ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })

@@ -4,7 +4,8 @@
     [length]="totalApplications" 
     [pageSize]="pageSize" 
     [pageSizeOptions]="pageSizeOptions"
-    showFirstLastButtons="true"
+    [pageIndex]="currentPage"
+    [showFirstLastButtons]="true"
     (page)="onPageChange($event)">
   </mat-paginator>
 </div>
