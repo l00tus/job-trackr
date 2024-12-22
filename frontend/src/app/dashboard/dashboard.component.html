@@ -1,3 +1,14 @@
+<div class="action-btns">
+  <button>Add new job application</button>
+  <mat-paginator 
+    [length]="totalApplications" 
+    [pageSize]="pageSize" 
+    [pageSizeOptions]="pageSizeOptions"
+    showFirstLastButtons="true"
+    (page)="onPageChange($event)">
+  </mat-paginator>
+</div>
+
 <div class="table-container">
 <table mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="job-title">

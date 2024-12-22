@@ -1,18 +1,19 @@
 import { DatePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [DatePipe, MatTableModule, MatButtonModule],
+  imports: [DatePipe, MatTableModule, MatButtonModule, MatPaginatorModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
   displayedColumns = ['job-title', 'company', 'status', 'job-link', 'date', 'actions'];
-  dataSource = [
+  fullData = [
       {
         "job-title": "Software Engineer",
         "company": "Company A",
@@ -174,5 +175,29 @@ export class DashboardComponent {
         "date": new Date("2024-12-12")
       },
     ]
+
+    dataSource: any[] = [];
+    totalApplications = this.fullData.length;
+    pageSizeOptions = [10, 20, 50];
+    pageSize = 20;
+    currentPage = 0;
     
+    @ViewChild(MatPaginator) paginator!: MatPaginator;
+    
+
+    ngOnInit(): void {
+      this.updatePageData();
+    }
+
+    onPageChange(event: any): void {
+      this.currentPage = event.pageIndex;
+      this.pageSize = event.pageSize;
+      this.updatePageData();
+    }
+
+    updatePageData(): void {
+      const startIndex = this.currentPage * this.pageSize;
+      const endIndex = startIndex + this.pageSize;
+      this.dataSource = this.fullData.slice(startIndex, endIndex);
+    }
 }

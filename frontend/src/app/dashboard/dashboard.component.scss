@@ -2,9 +2,61 @@ $bg-color: #E0E6EF;
 $primary-color: #ffffff;
 $primary-text: #8DB1E6;
 
+.action-btns {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+
+    button {
+        background-color: $primary-text;
+        border: 2px solid black;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+}
+
+// paginator styles
+::ng-deep {
+    .mdc-notched-outline > * {
+        border: none !important;
+    }
+    mat-select {
+        border: 2px solid black;
+        background-color: #8DB1E6;
+        padding: 10px 20px;
+        border-radius: 10px;
+
+        .mat-mdc-select-value-text {
+            font-size: 14px;
+        }
+    }
+
+
+    .mat-mdc-paginator-range-actions {
+        gap: 10px;
+        .mat-mdc-paginator-page-size-label,
+        .mat-mdc-paginator-range-label {
+            font-size: 14px
+        }
+
+        .mat-mdc-paginator-range-label {
+            margin: 0px !important;
+            padding: 0px 10px;
+        }
+
+        button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid black;
+            background-color: $primary-text;
+        }
+    }
+}
 .table-container {
     height: 100%;
-    max-height: calc(100vh - 80px);
+    max-height: calc(100vh - 88px - 46px - 60px); //header + button
 }
 
 table {
