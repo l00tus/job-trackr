@@ -34,6 +34,145 @@ export class DashboardComponent {
         "job-link": "https://www.company-c.com/job/data-analyst",
         "date": new Date("2024-12-14")
       },
+      {
+        "job-title": "Software Engineer",
+        "company": "Company A",
+        "status": "Applied",
+        "job-link": "https://www.company-a.com/job/software-engineer",
+        "date": new Date("2024-12-10")
+      },
+      {
+        "job-title": "Project Manager",
+        "company": "Company B",
+        "status": "Interview",
+        "job-link": "https://www.company-b.com/job/project-manager",
+        "date": new Date("2024-12-12")
+      },
+      {
+        "job-title": "Data Analyst",
+        "company": "Company C",
+        "status": "Rejected",
+        "job-link": "https://www.company-c.com/job/data-analyst",
+        "date": new Date("2024-12-14")
+      },
+      {
+        "job-title": "Software Engineer",
+        "company": "Company A",
+        "status": "Applied",
+        "job-link": "https://www.company-a.com/job/software-engineer",
+        "date": new Date("2024-12-10")
+      },
+      {
+        "job-title": "Project Manager",
+        "company": "Company B",
+        "status": "Interview",
+        "job-link": "https://www.company-b.com/job/project-manager",
+        "date": new Date("2024-12-12")
+      },
+      {
+        "job-title": "Data Analyst",
+        "company": "Company C",
+        "status": "Rejected",
+        "job-link": "https://www.company-c.com/job/data-analyst",
+        "date": new Date("2024-12-14")
+      },
+      {
+        "job-title": "Software Engineer",
+        "company": "Company A",
+        "status": "Applied",
+        "job-link": "https://www.company-a.com/job/software-engineer",
+        "date": new Date("2024-12-10")
+      },
+      {
+        "job-title": "Project Manager",
+        "company": "Company B",
+        "status": "Interview",
+        "job-link": "https://www.company-b.com/job/project-manager",
+        "date": new Date("2024-12-12")
+      },
+      {
+        "job-title": "Data Analyst",
+        "company": "Company C",
+        "status": "Rejected",
+        "job-link": "https://www.company-c.com/job/data-analyst",
+        "date": new Date("2024-12-14")
+      },
+      {
+        "job-title": "Software Engineer",
+        "company": "Company A",
+        "status": "Applied",
+        "job-link": "https://www.company-a.com/job/software-engineer",
+        "date": new Date("2024-12-10")
+      },
+      {
+        "job-title": "Project Manager",
+        "company": "Company B",
+        "status": "Interview",
+        "job-link": "https://www.company-b.com/job/project-manager",
+        "date": new Date("2024-12-12")
+      },
+      {
+        "job-title": "Data Analyst",
+        "company": "Company C",
+        "status": "Rejected",
+        "job-link": "https://www.company-c.com/job/data-analyst",
+        "date": new Date("2024-12-14")
+      },{
+        "job-title": "Software Engineer",
+        "company": "Company A",
+        "status": "Applied",
+        "job-link": "https://www.company-a.com/job/software-engineer",
+        "date": new Date("2024-12-10")
+      },
+      {
+        "job-title": "Project Manager",
+        "company": "Company B",
+        "status": "Interview",
+        "job-link": "https://www.company-b.com/job/project-manager",
+        "date": new Date("2024-12-12")
+      },
+      {
+        "job-title": "Data Analyst",
+        "company": "Company C",
+        "status": "Rejected",
+        "job-link": "https://www.company-c.com/job/data-analyst",
+        "date": new Date("2024-12-14")
+      },
+      {
+        "job-title": "Project Manager",
+        "company": "Company B",
+        "status": "Interview",
+        "job-link": "https://www.company-b.com/job/project-manager",
+        "date": new Date("2024-12-12")
+      },
+      {
+        "job-title": "Project Manager",
+        "company": "Company B",
+        "status": "Interview",
+        "job-link": "https://www.company-b.com/job/project-manager",
+        "date": new Date("2024-12-12")
+      },
+      {
+        "job-title": "Project Manager",
+        "company": "Company B",
+        "status": "Interview",
+        "job-link": "https://www.company-b.com/job/project-manager",
+        "date": new Date("2024-12-12")
+      },
+      {
+        "job-title": "Project Manager",
+        "company": "Company B",
+        "status": "Interview",
+        "job-link": "https://www.company-b.com/job/project-manager",
+        "date": new Date("2024-12-12")
+      },
+      {
+        "job-title": "Project Manager",
+        "company": "Company B",
+        "status": "Interview",
+        "job-link": "https://www.company-b.com/job/project-manager",
+        "date": new Date("2024-12-12")
+      },
     ]
     
 }

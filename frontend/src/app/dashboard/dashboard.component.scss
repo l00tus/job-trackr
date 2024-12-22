@@ -1,18 +1,56 @@
-$bg-color: #e2dad6;
-$primary-color: #f5eded;
-$primary-text: #6482ad;
+$bg-color: #E0E6EF;
+$primary-color: #ffffff;
+$primary-text: #8DB1E6;
+
+.table-container {
+    height: 100%;
+    max-height: calc(100vh - 80px);
+}
 
 table {
-    border: 1px solid black;
+    overflow: auto;
+    border-bottom: 2px solid black;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 100%;
 }
 
 table th {
-    background-color: rgb(100, 130, 173, 0.6);
+    background-color: $primary-text;
     font-weight: 550;
+    border-top: 2px solid black;
+
+    &:first-child {
+        border-top-left-radius: 8px;
+        border-left: 2px solid black;
+        box-shadow: -2px -3px 0px 0px $bg-color; //solution for "hiding" rows behind the sticky header row
+    }
+
+    &:last-child {
+        border-top-right-radius: 8px;
+        border-right: 2px solid black;
+        box-shadow: 2px -3px 0px 0px $bg-color; //solution for "hiding" rows behind the sticky header row
+    }
 }
 
 table tr {
-    background-color: rgb(100, 130, 173, 0.1);;
+    background-color: $bg-color;
+    
+    td:first-child {
+        border-left: 2px solid black;
+    }
+
+    td:last-child {
+        border-right: 2px solid black;
+    }
+
+    &:last-child td:first-child {
+        border-bottom-left-radius: 8px;
+    }
+
+    &:last-child td:last-child {
+        border-bottom-right-radius: 8px;
+    }
 }
 th, td {
     text-align: center;

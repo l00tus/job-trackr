@@ -1,3 +1,4 @@
+<div class="table-container">
 <table mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="job-title">
         <th mat-header-cell *matHeaderCellDef>Job Title</th>
@@ -34,6 +35,7 @@
         </td>
       </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+</div>
