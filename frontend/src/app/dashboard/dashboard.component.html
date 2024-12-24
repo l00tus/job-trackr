@@ -41,9 +41,11 @@
 
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Actions </th>
-        <td mat-cell *matCellDef="let application"> 
-          <button mat-button> Edit </button>
-          <button mat-button> Delete </button>
+        <td mat-cell *matCellDef="let application">
+          <!-- <div class="btn-group"> -->
+            <button mat-button><span class="material-icons">edit</span>Edit</button>
+            <button mat-button><span class="material-icons">delete</span>Delete</button>
+          <!-- </div> -->
         </td>
       </ng-container>
 

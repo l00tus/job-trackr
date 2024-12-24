@@ -143,6 +143,23 @@ table tr {
         border-bottom-right-radius: 8px;
     }
 }
+
+table button {
+    border: 2px solid black;
+    background-color: $primary-text;
+    border-radius: 10px !important;
+    font-size: 14px;
+    
+    &:last-child {
+      margin-left: 10px;  
+    }
+}
+
+table span {
+    font-size: 20px;
+    margin-right: 3px;
+}
+
 th, td {
     word-wrap: break-word;
     text-align: center;
