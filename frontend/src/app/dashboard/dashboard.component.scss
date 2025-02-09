@@ -13,6 +13,16 @@ $primary-text: #8DB1E6;
         padding: 10px 20px;
         cursor: pointer;
         border-radius: 10px;
+
+        span {
+            display: inline-block;
+            will-change: transform;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        &:hover span {
+            transform: scale(1.05);
+        }
     }
 }
 
@@ -87,9 +97,20 @@ mat-paginator {
             align-items: center;
             border: 2px solid black;
             background-color: $primary-text;
+
+            svg {
+                display: inline-block;
+                will-change: transform;
+                transition: transform 0.2s ease-in-out;
+            }
+
+            &:hover svg {
+                transform: scale(1.25);
+            }
         }
     }
 }
+
 .table-container {
     height: 100%;
     max-height: calc(100vh - 88px - 46px - 60px); //header + button
@@ -153,9 +174,19 @@ table button {
     &:last-child {
       margin-left: 10px;  
     }
+
+    span.btn-text {
+        display: flex;
+        will-change: transform;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    &:hover span.btn-text {
+        transform: scale(1.05);
+    }
 }
 
-table span {
+table span .material-icons {
     font-size: 20px;
     margin-right: 3px;
 }

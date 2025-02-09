@@ -45,7 +45,8 @@ li {
     font-size: 13px;
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    will-change: transform;
+    transition: transform 0.3s ease-in-out;
 }
 
 li:hover {
