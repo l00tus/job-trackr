@@ -5,6 +5,7 @@ const ApplicationModel = mongoose.model("Application", {
   user_id: String,
   job_title: String,
   company: String,
+  location: String,
   job_link: String,
   status: String,
   date: Date,

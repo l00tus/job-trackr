@@ -1,15 +1,15 @@
 const applicationsService = require("../services/applications.service");
 
 const applicationsController = {
-  getApplicationByID: async (req, res) => {
-    const id = req.params.id;
+  getApplicationsOfUser: async (req, res) => {
+    const user_id = req.params.user_id;
 
-    const application = await applicationsService.getApplicationByID(id);
+    const applications = await applicationsService.getApplicationsOfUser(user_id);
 
-    if (application) {
-      res.status(200).send(application);
+    if (applications) {
+      res.status(200).send(applications);
     } else {
-      res.status(404).send({ error: "No applications with the given ID was found" });
+      res.status(404).send({ error: "No applications were found for the provided user_id!" });
     }
   },
   createApplication: async (req, res) => {

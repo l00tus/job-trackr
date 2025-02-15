@@ -2,13 +2,10 @@ const ApplicationModel = require("../data/applications.model");
 const { v4: uuidv4 } = require("uuid");
 
 const applicationsService = {
-  getApplicationByID: async (id) => {
-    const application = await ApplicationModel.findOne(
-      { id: id },
-      { _id: 0, id: 0, user_id: 0, __v: 0 }
-    );
+  getApplicationsOfUser: async (user_id) => {
+    const applications = await ApplicationModel.find({ user_id: user_id }, {_id: 0, id: 0, user_id: 0})
 
-    return application;
+    return applications;
   },
   createApplication: async (applicationObject) => {
     applicationObject.id = uuidv4();
