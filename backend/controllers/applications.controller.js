@@ -15,7 +15,10 @@ const applicationsController = {
   createApplication: async (req, res) => {
     const applicationToBeCreated = req.body;
 
-    //TODO data validation
+    if(!applicationToBeCreated.job_title || !applicationToBeCreated.company || !applicationToBeCreated.location || !applicationToBeCreated.status) {
+      return res.status(400).send({ error: "Job title, company, location and status are required!" });
+    }
+
     try {
       newApplication = await applicationsService.createApplication(applicationToBeCreated);
 

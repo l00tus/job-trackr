@@ -1,5 +1,5 @@
 <div class="action-btns">
-  <button><span>Add new job application</span></button>
+  <button (click)="openAddAplicationModal()"><span>Add new job application</span></button>
   <mat-paginator
     [length]="totalApplications"
     [pageSize]="pageSize"
@@ -37,9 +37,7 @@
     <ng-container matColumnDef="job-link">
       <th mat-header-cell *matHeaderCellDef>Job Link</th>
       <td mat-cell *matCellDef="let application">
-        <a mat-button [href]="application['job-link']" target="_blank"
-          >View Job</a
-        >
+        <a mat-button [href]="application['job-link']" target="_blank">View Job</a>
       </td>
     </ng-container>
 
@@ -53,7 +51,7 @@
     <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef>Date Applied</th>
       <td mat-cell *matCellDef="let application">
-        {{ application["date"] | date : "mediumDate" }}
+        {{ application["date"] | date : "dd/MM/yyyy" }}
       </td>
     </ng-container>
 
@@ -79,3 +77,8 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 </div>
+
+<app-add-new-application-modal
+  *ngIf="isModalOpen"
+  (close)="closeAddAplicationModal()"
+></app-add-new-application-modal>

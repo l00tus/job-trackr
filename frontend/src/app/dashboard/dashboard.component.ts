@@ -1,4 +1,4 @@
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {
@@ -8,16 +8,19 @@ import {
 } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { CustomPaginatorService } from '../services/custom-paginator.service';
+import { AddNewApplicationModalComponent } from '../add-new-application-modal/add-new-application-modal.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [DatePipe, MatTableModule, MatButtonModule, MatPaginatorModule],
+  imports: [DatePipe, MatTableModule, MatButtonModule, MatPaginatorModule, AddNewApplicationModalComponent, CommonModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
   providers: [{ provide: MatPaginatorIntl, useClass: CustomPaginatorService }],
 })
 export class DashboardComponent {
+  isModalOpen = false;
+
   displayedColumns = [
     'job-title',
     'company',
@@ -37,6 +40,8 @@ export class DashboardComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  constructor() {}
+
   ngOnInit(): void {
     this.updatePageData();
   }
@@ -51,5 +56,13 @@ export class DashboardComponent {
     const startIndex = this.currentPage * this.pageSize;
     const endIndex = startIndex + this.pageSize;
     this.dataSource = this.fullData.slice(startIndex, endIndex);
+  }
+
+  openAddAplicationModal() {
+    this.isModalOpen = true;
+  }
+
+  closeAddAplicationModal() {
+    this.isModalOpen = false;
   }
 }

@@ -39,4 +39,12 @@ export class UserService {
       return '';
     }
   }
+
+  getUserId(): string {
+    if(this.user.id) {
+      return this.user.id;
+    } else {
+      return '';
+    }
+  }
 }

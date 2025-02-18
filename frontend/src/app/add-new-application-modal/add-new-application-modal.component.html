@@ -1,0 +1,38 @@
+<div class="modal-overlay" (click)="onClose()"></div>
+
+<div class="modal-container">
+  <h2>Add New Job Application</h2>
+  
+  <form [formGroup]="applicationForm">
+    <label>Job Title</label>
+    <input type="text" formControlName="job_title" required />
+
+    <label>Company</label>
+    <input type="text" formControlName="company" required />
+
+    <label>Location</label>
+    <input type="text" formControlName="location" required />
+
+    <label>Job Link</label>
+    <input type="text" formControlName="job_link" />
+
+    <label>Status</label>
+    <select formControlName="status">
+      <option value="Applied">Applied</option>
+      <option value="To Apply">To Apply</option>
+      <option value="Interview">Interview</option>
+      <option value="Offer">Offer</option>
+      <option value="Accepted">Accepted</option>
+      <option value="Rejected">Rejected</option>
+      <option value="Ghosted">Ghosted</option>
+    </select>
+
+    <label>Date Applied</label>
+    <input type="date" formControlName="date" required />
+
+    <div class="modal-actions">
+      <button type="button" class="cancel-btn" (click)="onClose()"><span>Cancel</span></button>
+      <button type="submit" class="submit-btn" (click)="onSubmit()" [disabled]="applicationForm.invalid"><span>Submit</span></button>
+    </div>
+  </form>
+</div>
