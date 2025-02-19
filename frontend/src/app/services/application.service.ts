@@ -12,7 +12,7 @@ export class ApplicationService {
 
   async getApplicationsOfUser(user_id: string): Promise<Application[]> {
     try {
-      const response = await firstValueFrom(this.http.get<Application[]>(this.applicationAPI + `/${user_id}`, { withCredentials: true }));
+      const response = await firstValueFrom(this.http.get<Application[]>(`${this.applicationAPI}/${user_id}`, { withCredentials: true }));
       return response;
     } catch (err) {
       console.error(err);
@@ -29,4 +29,12 @@ export class ApplicationService {
       return null;
     }
   }
+
+  async deleteApplication(id: string): Promise<void> {
+    try {
+      await firstValueFrom(this.http.delete<void>(`${this.applicationAPI}/${id}`, { withCredentials: true }));
+    } catch (err) {
+      console.error(err)
+    }
+  } 
 }

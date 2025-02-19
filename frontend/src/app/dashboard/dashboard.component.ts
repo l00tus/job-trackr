@@ -13,18 +13,22 @@ import { ApplicationService } from '../services/application.service';
 import { UserService } from '../services/user.service';
 import { User } from '../models/user.model';
 import { Application } from '../models/application.model';
+import { DeleteApplicationModalComponent } from "../delete-application-modal/delete-application-modal.component";
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [DatePipe, MatTableModule, MatButtonModule, MatPaginatorModule, AddNewApplicationModalComponent, CommonModule],
+  imports: [DatePipe, MatTableModule, MatButtonModule, MatPaginatorModule, AddNewApplicationModalComponent, CommonModule, DeleteApplicationModalComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
   providers: [{ provide: MatPaginatorIntl, useClass: CustomPaginatorService }],
 })
 export class DashboardComponent {
   userObject!: User | null;
-  isModalOpen = false;
+
+  isAddNewApplicationModalOpen = false;
+  isDeleteApplicationModalOpen = false;
+  selectedApplicationId: string | null = null;
 
   displayedColumns = [
     'job-title',
@@ -72,10 +76,30 @@ export class DashboardComponent {
   }
 
   openAddAplicationModal() {
-    this.isModalOpen = true;
+    this.isAddNewApplicationModalOpen = true;
   }
 
-  closeAddAplicationModal() {
-    this.isModalOpen = false;
+  async closeAddAplicationModal() {
+    this.isAddNewApplicationModalOpen = false;
+
+    if(this.userObject?.id) {
+      this.fullData = this.fullData = await this.applicationService.getApplicationsOfUser(this.userObject.id);
+      this.updatePageData();
+    }
+  }
+
+  openDeleteApplicationModal(applicationId: string) {
+    this.selectedApplicationId = applicationId;
+    this.isDeleteApplicationModalOpen = true;
+  }
+
+  async closeDeleteApplicationModal() {
+    this.isDeleteApplicationModalOpen = false;  
+    this.selectedApplicationId = null;
+
+    if(this.userObject?.id) {
+      this.fullData = this.fullData = await this.applicationService.getApplicationsOfUser(this.userObject.id);
+      this.updatePageData();
+    }
   }
 }

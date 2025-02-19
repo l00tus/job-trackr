@@ -64,7 +64,7 @@
             ><span class="material-icons">edit</span>Edit</span
           >
         </button>
-        <button mat-button>
+        <button mat-button (click)="openDeleteApplicationModal(application.id)">
           <span class="btn-text"
             ><span class="material-icons">delete</span>Delete</span
           >
@@ -79,7 +79,13 @@
 </div>
 
 <app-add-new-application-modal
-  *ngIf="isModalOpen"
+  *ngIf="isAddNewApplicationModalOpen"
   [userObject]="userObject"
   (close)="closeAddAplicationModal()"
 ></app-add-new-application-modal>
+
+<app-delete-application-modal
+  *ngIf="isDeleteApplicationModalOpen"
+  [applicationId]="selectedApplicationId"
+  (close)="closeDeleteApplicationModal()"
+></app-delete-application-modal>

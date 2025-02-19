@@ -163,6 +163,10 @@ table tr {
     &:last-child td:last-child {
         border-bottom-right-radius: 8px;
     }
+
+    &:hover {
+        background-color: #CCD6E3;
+    }
 }
 
 table button {

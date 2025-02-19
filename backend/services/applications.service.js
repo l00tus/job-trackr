@@ -3,7 +3,7 @@ const { v4: uuidv4 } = require("uuid");
 
 const applicationsService = {
   getApplicationsOfUser: async (user_id) => {
-    const applications = await ApplicationModel.find({ user_id: user_id }, {_id: 0, id: 0, user_id: 0})
+    const applications = await ApplicationModel.find({ user_id: user_id }, {_id: 0, user_id: 0})
 
     return applications;
   },

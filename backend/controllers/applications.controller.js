@@ -35,7 +35,7 @@ const applicationsController = {
     if(response.deletedCount == 0) {
       res.status(404).send({ error: "No applications with the given ID was found" });
     } else {
-      res.status(204).send();
+      res.status(200).send({ "message": "Application deleted successfully" });
     }
   }
 };

@@ -13,6 +13,9 @@ $primary-text: #8DB1E6;
 }
 
 .modal-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -29,55 +32,12 @@ $primary-text: #8DB1E6;
 h2 {
     font-size: 16px;
     font-weight: 550;
-}
-
-form {
-    padding: 10px 0;
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin-top: 20px;
-    margin-bottom: 5px;
-    font-size: 14px;
-    font-weight: 550;
-}
-
-input,
-select {
-    margin-top: 5px;
-    border: 2px solid black;
-    border-radius: 3px;
-    font-size: 14px;
-    outline: none;
-}
-
-input {
-    padding: 6px 8px;
-}
-
-select {
-    padding: 6px 5px;
-}
-
-input:focus,
-select:focus {
-    border: 2px solid black;
-    box-shadow: 0 0 0 2px white, 0 0 0 4px black;
-}
-
-select option {
-    padding: 10px;
-    font-size: 14px;
-    background: white;
-    color: black;
+    text-align: center;
 }
 
 .modal-actions {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
 }
 
 button {
@@ -97,8 +57,4 @@ button {
     &:hover span {
         transform: scale(1.05);
     }
-}
-
-.submit-btn:disabled {
-    cursor: not-allowed;
 }
