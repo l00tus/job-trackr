@@ -14,11 +14,12 @@ import { UserService } from '../services/user.service';
 import { User } from '../models/user.model';
 import { Application } from '../models/application.model';
 import { DeleteApplicationModalComponent } from "../modals/delete-application-modal/delete-application-modal.component";
+import { EditApplicationModalComponent } from "../modals/edit-application-modal/edit-application-modal.component";
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [DatePipe, MatTableModule, MatButtonModule, MatPaginatorModule, AddNewApplicationModalComponent, CommonModule, DeleteApplicationModalComponent],
+  imports: [DatePipe, MatTableModule, MatButtonModule, MatPaginatorModule, AddNewApplicationModalComponent, CommonModule, DeleteApplicationModalComponent, EditApplicationModalComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
   providers: [{ provide: MatPaginatorIntl, useClass: CustomPaginatorService }],
@@ -27,6 +28,8 @@ export class DashboardComponent {
   userObject!: User | null;
 
   isAddNewApplicationModalOpen = false;
+  isEditApplicationModalOpen = false;
+  selectedApplication: Application | null = null;
   isDeleteApplicationModalOpen = false;
   selectedApplicationId: string | null = null;
 
@@ -98,8 +101,18 @@ export class DashboardComponent {
     this.selectedApplicationId = null;
 
     if(this.userObject?.id) {
-      this.fullData = this.fullData = await this.applicationService.getApplicationsOfUser(this.userObject.id);
+      this.fullData = await this.applicationService.getApplicationsOfUser(this.userObject.id);
       this.updatePageData();
     }
+  }
+
+  openEditApplicationModal(application: Application) {
+    this.selectedApplication = application;
+    this.isEditApplicationModalOpen = true;
+  }
+
+  closeEditApplicationModal() {
+    this.isEditApplicationModalOpen = false;
+    this.selectedApplicationId = null;
   }
 }

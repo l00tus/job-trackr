@@ -1,0 +1,104 @@
+$bg-color: #E0E6EF;
+$primary-color: #ffffff;
+$primary-text: #8DB1E6;
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.modal-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    z-index: 1000;
+    border: 2px solid black;
+}
+
+h2 {
+    font-size: 16px;
+    font-weight: 550;
+}
+
+form {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 550;
+}
+
+input,
+select {
+    margin-top: 5px;
+    border: 2px solid black;
+    border-radius: 3px;
+    font-size: 14px;
+    outline: none;
+}
+
+input {
+    padding: 6px 8px;
+}
+
+select {
+    padding: 6px 5px;
+}
+
+input:focus,
+select:focus {
+    border: 2px solid black;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px black;
+}
+
+select option {
+    padding: 10px;
+    font-size: 14px;
+    background: white;
+    color: black;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    font-size: 14px;
+    background-color: $primary-text;
+    border: 2px solid black;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+
+    span {
+        display: inline-block;
+        will-change: transform;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    &:hover span {
+        transform: scale(1.05);
+    }
+}
+
+.submit-btn:disabled {
+    cursor: not-allowed;
+}

@@ -59,7 +59,7 @@
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let application">
         <!-- <div class="btn-group"> -->
-        <button mat-button>
+        <button mat-button (click)="openEditApplicationModal(application)">
           <span class="btn-text"
             ><span class="material-icons">edit</span>Edit</span
           >
@@ -83,6 +83,12 @@
   [userObject]="userObject"
   (close)="closeAddAplicationModal()"
 ></app-add-new-application-modal>
+
+<app-edit-application-modal
+  *ngIf="isEditApplicationModalOpen"
+  [application]="selectedApplication"
+  (close)="closeEditApplicationModal()"
+></app-edit-application-modal>
 
 <app-delete-application-modal
   *ngIf="isDeleteApplicationModalOpen"
