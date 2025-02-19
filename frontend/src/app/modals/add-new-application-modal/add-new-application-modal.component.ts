@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ApplicationService } from '../services/application.service';
-import { User } from '../models/user.model';
+import { ApplicationService } from '../../services/application.service';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-add-new-application-modal',

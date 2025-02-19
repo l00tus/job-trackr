@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ApplicationService } from '../services/application.service';
+import { ApplicationService } from '../../services/application.service';
 
 @Component({
   selector: 'app-delete-application-modal',

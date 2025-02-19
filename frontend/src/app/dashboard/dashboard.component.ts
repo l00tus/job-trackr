@@ -8,12 +8,12 @@ import {
 } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { CustomPaginatorService } from '../services/custom-paginator.service';
-import { AddNewApplicationModalComponent } from '../add-new-application-modal/add-new-application-modal.component';
+import { AddNewApplicationModalComponent } from '../modals/add-new-application-modal/add-new-application-modal.component';
 import { ApplicationService } from '../services/application.service';
 import { UserService } from '../services/user.service';
 import { User } from '../models/user.model';
 import { Application } from '../models/application.model';
-import { DeleteApplicationModalComponent } from "../delete-application-modal/delete-application-modal.component";
+import { DeleteApplicationModalComponent } from "../modals/delete-application-modal/delete-application-modal.component";
 
 @Component({
   selector: 'app-dashboard',
