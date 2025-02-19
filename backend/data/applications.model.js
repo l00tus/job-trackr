@@ -8,6 +8,12 @@ const ApplicationModel = mongoose.model("Application", {
   location: String,
   job_link: String,
   status: String,
+  status_history: [
+    {
+      status: String,
+      date: { type: Date, default: Date.now },
+    },
+  ],
   date: Date,
 });
 

@@ -1,3 +1,4 @@
+const { application } = require("express");
 const ApplicationModel = require("../data/applications.model");
 const { v4: uuidv4 } = require("uuid");
 
@@ -9,6 +10,11 @@ const applicationsService = {
   },
   createApplication: async (applicationObject) => {
     applicationObject.id = uuidv4();
+    applicationObject.status_history = [{
+      status: applicationObject.status,
+      date: new Date(),
+    }];
+
     const newApplication = new ApplicationModel(applicationObject);
     try {
       return await newApplication.save();
@@ -21,6 +27,34 @@ const applicationsService = {
 
     return response;
   },
+  updateApplicationByID: async (id, updatedApplication) => {
+    console.log("REACHED SERVICE")
+
+    const application = await ApplicationModel.findOne({ id: id });
+    
+    console.log(application);
+
+    if(!application) {
+      return null;
+    }
+
+    if(updatedApplication.status && updatedApplication.status !== application.status) {
+      application.status_history.push(
+        {
+          status: updatedApplication.status,
+          date: new Date(),
+        },
+      );
+    }
+
+    Object.assign(application, updatedApplication);
+
+    try {
+      return await application.save();
+    } catch (error) {
+      throw error;
+    }
+  }
 };
 
 module.exports = applicationsService;

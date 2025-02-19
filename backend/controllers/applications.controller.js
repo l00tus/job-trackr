@@ -37,6 +37,26 @@ const applicationsController = {
     } else {
       res.status(200).send({ "message": "Application deleted successfully" });
     }
+  },
+  updateApplicationByID: async (req, res) => {
+    const id = req.params.id;
+    const updatedApplication = req.body;
+
+    console.log("REACHED CONTROLLER");
+    console.log(id, updatedApplication);
+
+    try {
+      const response = await applicationsService.updateApplicationByID(id, updatedApplication);
+
+      if(!response) {
+        return res.status(404).send({ error: "Application not found!" });
+      }
+
+      res.status(200).send({ "message": "Application updated successfully", application: response });
+    } catch (error) {
+      res.status(500).send({ error: error});
+    }
+
   }
 };
 

@@ -6,5 +6,6 @@ export interface Application {
   location: string;
   job_link?: string;
   status: string;
+  status_history: { status: string; date: string}[];
   date?: string;
 }
