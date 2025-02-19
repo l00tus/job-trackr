@@ -65,13 +65,19 @@ const usersController = {
         const token = req.cookies.token;
 
         if(!token) {
-            res.status(401).send({ "error": "No token!"});
-            return;
+            return res.status(401).send({ "error": "No token!"});
         }
         
         try {
             const decoded = jwt.verify(token, process.env.JWT_SECRET);
-            res.status(200).send(decoded);
+
+            const userInfo = {
+                id: decoded.id,
+                username: decoded.username,
+                email: decoded.email
+            };
+
+            res.status(200).send(userInfo);
         } catch (err) {
             res.status(401).send({ "error": "Invalid token" })
         }

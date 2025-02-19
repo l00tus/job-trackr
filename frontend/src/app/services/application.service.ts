@@ -1,17 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
-
-interface Application {
-  user_id: string;
-  job_title: string;
-  company: string;
-  location: string;
-  job_link?: string;
-  status: string;
-  date?: string;
-}
-
+import { Application } from '../models/application.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -20,9 +10,19 @@ export class ApplicationService {
 
   constructor(private http: HttpClient) { }
 
-  async createApplication(applicationObject: Application): Promise<any> {
+  async getApplicationsOfUser(user_id: string): Promise<Application[]> {
     try {
-      const response = await firstValueFrom(this.http.post(this.applicationAPI, applicationObject, {withCredentials: true}));
+      const response = await firstValueFrom(this.http.get<Application[]>(this.applicationAPI + `/${user_id}`, { withCredentials: true }));
+      return response;
+    } catch (err) {
+      console.error(err);
+      return [];
+    }
+  }
+
+  async createApplication(applicationObject: Application): Promise<Application | null> {
+    try {
+      const response = await firstValueFrom(this.http.post<Application>(this.applicationAPI, applicationObject, { withCredentials: true }));
       return response;
     } catch (err) {
       console.error(err)

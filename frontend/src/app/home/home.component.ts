@@ -2,6 +2,7 @@ import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  username: string = '';
+  userObject!: User | null;
   isBrowser: boolean = false;
   isLoggedIn: boolean = false;
   isAppInitialized: boolean = false;
@@ -34,8 +35,7 @@ export class HomeComponent {
       
       if (this.isLoggedIn) {        
         try {
-          await this.userService.fetchUser();
-          this.username = this.userService.getUsername();
+          this.userObject = await this.userService.fetchUser();
         } catch (err) {
           console.error(err);
         }

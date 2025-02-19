@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../services/user.service';
 import { ApplicationService } from '../services/application.service';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-add-new-application-modal',
@@ -12,13 +12,13 @@ import { ApplicationService } from '../services/application.service';
   styleUrl: './add-new-application-modal.component.scss',
 })
 export class AddNewApplicationModalComponent {
+  @Input() userObject!: User | null;
   @Output() close = new EventEmitter<void>();
 
   applicationForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserService,
     private applicationService: ApplicationService
   ) {
     this.applicationForm = this.fb.group({
@@ -39,9 +39,7 @@ export class AddNewApplicationModalComponent {
     if(this.applicationForm.valid) {
       let applicationObject = this.applicationForm.value;
 
-      await this.userService.fetchUser();
-
-      const user_id = this.userService.getUserId();
+      const user_id = this.userObject?.id;
       applicationObject.user_id = user_id;
 
       await this.applicationService.createApplication(applicationObject);

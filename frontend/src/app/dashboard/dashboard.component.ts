@@ -9,6 +9,10 @@ import {
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { CustomPaginatorService } from '../services/custom-paginator.service';
 import { AddNewApplicationModalComponent } from '../add-new-application-modal/add-new-application-modal.component';
+import { ApplicationService } from '../services/application.service';
+import { UserService } from '../services/user.service';
+import { User } from '../models/user.model';
+import { Application } from '../models/application.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,6 +23,7 @@ import { AddNewApplicationModalComponent } from '../add-new-application-modal/ad
   providers: [{ provide: MatPaginatorIntl, useClass: CustomPaginatorService }],
 })
 export class DashboardComponent {
+  userObject!: User | null;
   isModalOpen = false;
 
   displayedColumns = [
@@ -30,8 +35,10 @@ export class DashboardComponent {
     'date',
     'actions',
   ];
-  fullData = [];
 
+  user_id!: string;
+
+  fullData: Application[] = [];
   dataSource: any[] = [];
   totalApplications = this.fullData.length;
   pageSizeOptions = [10, 20, 50];
@@ -40,9 +47,15 @@ export class DashboardComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor() {}
+  constructor(private userService: UserService, private applicationService: ApplicationService) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.userObject = await this.userService.fetchUser();
+    
+    if(this.userObject) {
+      this.fullData = await this.applicationService.getApplicationsOfUser(this.userObject.id);
+    }
+
     this.updatePageData();
   }
 
