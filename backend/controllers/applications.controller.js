@@ -42,9 +42,6 @@ const applicationsController = {
     const id = req.params.id;
     const updatedApplication = req.body;
 
-    console.log("REACHED CONTROLLER");
-    console.log(id, updatedApplication);
-
     try {
       const response = await applicationsService.updateApplicationByID(id, updatedApplication);
 

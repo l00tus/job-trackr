@@ -28,11 +28,7 @@ const applicationsService = {
     return response;
   },
   updateApplicationByID: async (id, updatedApplication) => {
-    console.log("REACHED SERVICE")
-
     const application = await ApplicationModel.findOne({ id: id });
-    
-    console.log(application);
 
     if(!application) {
       return null;
