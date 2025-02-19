@@ -111,8 +111,13 @@ export class DashboardComponent {
     this.isEditApplicationModalOpen = true;
   }
 
-  closeEditApplicationModal() {
+  async closeEditApplicationModal() {
     this.isEditApplicationModalOpen = false;
     this.selectedApplicationId = null;
+
+    if(this.userObject?.id) {
+      this.fullData = await this.applicationService.getApplicationsOfUser(this.userObject.id);
+      this.updatePageData();
+    }
   }
 }

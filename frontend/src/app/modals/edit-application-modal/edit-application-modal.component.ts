@@ -37,7 +37,7 @@ export class EditApplicationModalComponent {
         location: [this.application?.location, Validators.required],
         job_link: [this.application?.job_link],
         status: [this.application?.status, Validators.required],
-        date: [this.application?.date],
+        date: [this.application?.date ? new Date(this.application.date).toISOString().split('T')[0] : ''],      
       });
     }
 
@@ -45,7 +45,14 @@ export class EditApplicationModalComponent {
       this.close.emit();
     }
     
-    onSubmit() {
-      this.close.emit();
+    async onSubmit()  {
+      if(this.applicationForm.valid && this.application?.id) {
+        const updatedApplication = this.applicationForm.value;
+        const id: string  = this.application.id;
+
+        await this.applicationService.updateApplication(id, updatedApplication);
+
+        this.close.emit();
+      }
     }
 }

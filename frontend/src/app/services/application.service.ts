@@ -36,5 +36,15 @@ export class ApplicationService {
     } catch (err) {
       console.error(err)
     }
-  } 
+  }
+
+  async updateApplication(id: string, updatedApplication: Application): Promise<Application | null> {
+    try {
+      const response = await firstValueFrom(this.http.put<Application>(`${this.applicationAPI}/${id}`, updatedApplication, { withCredentials: true }));
+      return response;
+    } catch (err) {
+      console.error(err)
+      return null;
+    }
+  }
 }
