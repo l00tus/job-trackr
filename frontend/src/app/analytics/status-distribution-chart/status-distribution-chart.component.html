@@ -1,0 +1,8 @@
+<div class="chart">
+    <google-chart
+        *ngIf="data.length > 1 && type"
+        [type]="type"
+        [data]="data"
+        [options]="options">
+    </google-chart>
+</div>

@@ -1,1 +1,28 @@
-<p>analytics works!</p>
+<div class="analytics-container">
+    <div class="tabs">
+        <div class="btn-group">
+            <button (click)="setActiveTab('status')" [class.active]="activeTab === 'status'">Status Overview</button>
+            <button (click)="setActiveTab('trends')" [class.active]="activeTab === 'trends'">Application Over Time</button>
+            <button (click)="setActiveTab('sankey')" [class.active]="activeTab === 'sankey'">Job Application Journey</button>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <div *ngIf="activeTab === 'status'" class="chart-container">
+            <div class="options">
+                <button (click)="setStatusChart('pie')"><span>Pie Chart</span></button>
+                <button (click)="setStatusChart('column')"><span>Column Chart</span></button>
+            </div>
+            <app-status-distribution-chart
+                [type]="statusChartType"
+                [data]="statusChartData"
+            ></app-status-distribution-chart>
+        </div>
+        <div *ngIf="activeTab === 'trends'">
+            <p>trends works</p>
+        </div>
+        <div *ngIf="activeTab === 'sankey'">
+            <p>sankey works</p>
+        </div>
+    </div>
+</div>

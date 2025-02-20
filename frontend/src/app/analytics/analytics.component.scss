@@ -1,0 +1,74 @@
+$bg-color: #E0E6EF;
+$primary-color: #ffffff;
+$primary-text: #8DB1E6;
+
+.analytics-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.tabs {
+    position: relative;
+    left: -25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-group {
+    background-color: $primary-text;
+    border: 2px solid black;
+    padding: 10px;
+
+    button {
+        font-size: 14px;
+        font-weight: 450;
+        background-color: $primary-text;
+        border: 2px solid $primary-text;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 10px;
+
+        &.active {
+            border: 2px solid black;
+        }
+    }
+}
+
+.tab-content {
+    .chart-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        height: 100%;
+    }
+    .options {
+        position: relative;
+        left: -25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        button {
+            font-size: 14px;
+            font-weight: 450;
+            background-color: $primary-text;
+            border: 2px solid black;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 10px;
+
+            span {
+                display: inline-block;
+                will-change: transform;
+                transition: transform 0.3s ease-in-out;
+            }
+    
+            &:hover span {
+                transform: scale(1.05);
+            }
+        }
+    }
+}

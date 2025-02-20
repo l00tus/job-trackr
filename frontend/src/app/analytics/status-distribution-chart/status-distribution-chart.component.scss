@@ -1,0 +1,15 @@
+$bg-color: #E0E6EF;
+$primary-color: #ffffff;
+$primary-text: #8DB1E6;
+
+.chart {
+    background-color: $primary-text;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border: 2px solid black;
+}
+
+::ng-deep circle {
+    stroke: black !important;
+    stroke-width: 1 !important;
+}

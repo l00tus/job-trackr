@@ -3,7 +3,7 @@ $primary-color: #ffffff;
 $primary-text: #8DB1E6;
 
 .content {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     background-color: $bg-color;
