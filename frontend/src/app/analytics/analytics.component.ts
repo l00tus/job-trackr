@@ -18,6 +18,7 @@ import { ChartType } from 'angular-google-charts';
 export class AnalyticsComponent {
   userObject!: User | null;
   activeTab!: string;
+  applicationCount!: number;
 
   statusChartType: ChartType = ChartType.PieChart;
   statusChartData: (string | number)[][] = [];
@@ -28,6 +29,7 @@ export class AnalyticsComponent {
     this.userObject = await this.userService.fetchUser();
 
     await this.fetchStatusChartData();
+    this.applicationCount = this.statusChartData.length;
   }
   
   setActiveTab(activeTab: string) {

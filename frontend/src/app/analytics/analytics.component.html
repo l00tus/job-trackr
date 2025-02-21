@@ -2,7 +2,7 @@
     <div class="tabs">
         <div class="btn-group">
             <button (click)="setActiveTab('status')" [class.active]="activeTab === 'status'">Status Overview</button>
-            <button (click)="setActiveTab('trends')" [class.active]="activeTab === 'trends'">Application Over Time</button>
+            <button (click)="setActiveTab('trends')" [class.active]="activeTab === 'trends'">Applications Over Time</button>
             <button (click)="setActiveTab('sankey')" [class.active]="activeTab === 'sankey'">Job Application Journey</button>
         </div>
     </div>
@@ -13,6 +13,9 @@
                 <button (click)="setStatusChart('pie')"><span>Pie Chart</span></button>
                 <button (click)="setStatusChart('column')"><span>Column Chart</span></button>
             </div>
+
+            <h3 *ngIf="activeTab">You currently have <span>{{ applicationCount }}</span> {{ applicationCount === 1 ? 'application' : 'applications' }}!</h3>
+
             <app-status-distribution-chart
                 [type]="statusChartType"
                 [data]="statusChartData"
