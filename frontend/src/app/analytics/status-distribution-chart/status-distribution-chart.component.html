@@ -1,8 +1,14 @@
 <div class="chart">
     <google-chart
-        *ngIf="data.length > 1 && type"
+        *ngIf="hasData && type == 'PieChart'"
         [type]="type"
         [data]="data"
-        [options]="options">
+        [options]="pieOptions">
+    </google-chart>
+    <google-chart
+        *ngIf="hasData && type == 'ColumnChart'"
+        [type]="type"
+        [data]="columnData"
+        [options]="columnOptions">
     </google-chart>
 </div>

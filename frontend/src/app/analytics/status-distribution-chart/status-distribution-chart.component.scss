@@ -3,13 +3,21 @@ $primary-color: #ffffff;
 $primary-text: #8DB1E6;
 
 .chart {
+    display: flex;
+    justify-content: center;
     background-color: $primary-text;
     overflow-x: auto;
     overflow-y: hidden;
     border: 2px solid black;
+    border-radius: 10px;
 }
 
 ::ng-deep circle {
+    stroke: black !important;
+    stroke-width: 1 !important;
+}
+
+::ng-deep g g g rect {
     stroke: black !important;
     stroke-width: 1 !important;
 }
