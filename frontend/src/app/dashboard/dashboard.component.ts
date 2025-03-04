@@ -61,6 +61,7 @@ export class DashboardComponent {
     
     if(this.userObject) {
       this.fullData = await this.applicationService.getApplicationsOfUser(this.userObject.id);
+      this.totalApplications = this.fullData.length;
     }
 
     this.updatePageData();
@@ -87,6 +88,7 @@ export class DashboardComponent {
 
     if(this.userObject?.id) {
       this.fullData = this.fullData = await this.applicationService.getApplicationsOfUser(this.userObject.id);
+      this.totalApplications = this.fullData.length;
       this.updatePageData();
     }
   }
@@ -102,6 +104,7 @@ export class DashboardComponent {
 
     if(this.userObject?.id) {
       this.fullData = await this.applicationService.getApplicationsOfUser(this.userObject.id);
+      this.totalApplications = this.fullData.length;
       this.updatePageData();
     }
   }
